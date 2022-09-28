@@ -518,6 +518,16 @@ number of cases (<code>positiveIncrease</code>) by
 <pre class="r"><code>df %&gt;% 
   group_by(weekday) %&gt;% 
   summarise(mean(positiveIncrease))</code></pre>
+<pre><code>## # A tibble: 7 x 2
+##   weekday `mean(positiveIncrease)`
+##     &lt;dbl&gt;                    &lt;dbl&gt;
+## 1       1                    1261.
+## 2       2                    1174.
+## 3       3                    1314.
+## 4       4                    1439.
+## 5       5                    1478.
+## 6       6                    1540.
+## 7       7                    1478.</code></pre>
 <ul>
 <li>Calculate the median number of cases (<code>positiveIncrease</code>)
 by <code>month</code></li>
@@ -576,6 +586,11 @@ use:</p>
   filter(month==1|month==2) %&gt;% 
   group_by(month) %&gt;% 
   summarise(positve_increase = mean(positiveIncrease))</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##   month positve_increase
+##   &lt;dbl&gt;            &lt;dbl&gt;
+## 1     1            3448.
+## 2     2            1378.</code></pre>
 <ul>
 <li>Calculate the median number of cases (<code>positiveIncrease</code>)
 on the weekend by <code>month</code> in October and November 2020.</li>
@@ -608,15 +623,16 @@ month (<code>month2</code> variable) in Fall 2020</li>
 <li>Compare the average number of hospitalizations between weekdays and
 weekends in Summer 2020</li>
 </ul>
-<pre class="r"><code>df %&gt;% 
+<pre class="r"><code>df4 &lt;- df[!(is.na(df$hospitalized)), ]
+df4 %&gt;% 
   filter(month==5|month==6|month==7|month==8) %&gt;%
   group_by(weekend) %&gt;% 
-  summarise(positve_increase = mean(positiveIncrease))</code></pre>
+  summarise(hospitalized = mean(hospitalized))</code></pre>
 <pre><code>## # A tibble: 2 x 2
-##   weekend positve_increase
-##     &lt;dbl&gt;            &lt;dbl&gt;
-## 1       0             687.
-## 2       1             774.</code></pre>
+##   weekend hospitalized
+##     &lt;dbl&gt;        &lt;dbl&gt;
+## 1       0        4527.
+## 2       1        4491.</code></pre>
 <ul>
 <li>Redo Questions 14 and 15 in <a href="assignment3.html">Assignment
 3</a> using the combos. Notice: you also need to use the data used in
@@ -635,12 +651,12 @@ class(df2$Date_report)</code></pre>
 <pre><code>## Warning: Unknown or uninitialised column: `Date_report`.</code></pre>
 <pre><code>## [1] &quot;NULL&quot;</code></pre>
 <pre class="r"><code>str(df2)</code></pre>
-<pre><code>## spec_tbl_df [51,806 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ DATE_REPORT: Date[1:51806], format: &quot;2020-01-21&quot; &quot;2020-01-22&quot; ...
-##  $ STATE      : chr [1:51806] &quot;Washington&quot; &quot;Washington&quot; &quot;Washington&quot; &quot;Illinois&quot; ...
-##  $ FIPS       : chr [1:51806] &quot;53&quot; &quot;53&quot; &quot;53&quot; &quot;17&quot; ...
-##  $ CASES      : num [1:51806] 1 1 1 1 1 1 1 1 1 2 ...
-##  $ DEATH      : num [1:51806] 0 0 0 0 0 0 0 0 0 0 ...
+<pre><code>## spec_tbl_df [52,030 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ DATE_REPORT: Date[1:52030], format: &quot;2020-01-21&quot; &quot;2020-01-22&quot; ...
+##  $ STATE      : chr [1:52030] &quot;Washington&quot; &quot;Washington&quot; &quot;Washington&quot; &quot;Illinois&quot; ...
+##  $ FIPS       : chr [1:52030] &quot;53&quot; &quot;53&quot; &quot;53&quot; &quot;17&quot; ...
+##  $ CASES      : num [1:52030] 1 1 1 1 1 1 1 1 1 2 ...
+##  $ DEATH      : num [1:52030] 0 0 0 0 0 0 0 0 0 0 ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
 ##   ..   date = col_date(format = &quot;&quot;),
@@ -658,14 +674,14 @@ df2 %&gt;%
   group_by(WEEK_DAY) %&gt;% 
   summarise(cases = median(CASES))</code></pre>
 <pre><code>## # A tibble: 7 x 2
-##   WEEK_DAY    cases
-##   &lt;chr&gt;       &lt;dbl&gt;
-## 1 Friday    152298 
-## 2 Monday    152174.
-## 3 Saturday  152213 
-## 4 Sunday    152102.
-## 5 Thursday  152273 
-## 6 Tuesday   152206 
+##   WEEK_DAY   cases
+##   &lt;chr&gt;      &lt;dbl&gt;
+## 1 Friday    152298
+## 2 Monday    152273
+## 3 Saturday  152298
+## 4 Sunday    152213
+## 5 Thursday  152273
+## 6 Tuesday   152306
 ## 7 Wednesday 152243</code></pre>
 <pre class="r"><code>a=quantile(df2$DEATH)[2]
 b=quantile(df2$DEATH)[4]

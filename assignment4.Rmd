@@ -129,7 +129,7 @@ x %>% sqrt %>% sum %>% log
 
 This combo is used when you want to apply a function/calculation to different groups of the data. For example, to calculate the average number of cases (`positiveIncrease`) by `dataQualityGrade`, we use:
 
-```{r, eval=FALSE}
+```{r}
 df %>% 
   group_by(weekday) %>% 
   summarise(mean(positiveIncrease))
@@ -164,7 +164,7 @@ df %>%
 
 An example: to calculate the average number of cases (`positiveIncrease`) in January and February separately, we use:
 
-```{r, eval=FALSE}
+```{r}
 df %>% 
   filter(month==1|month==2) %>% 
   group_by(month) %>% 
