@@ -190,10 +190,11 @@ df %>%
 
 - Compare the average number of hospitalizations between weekdays and weekends in Summer 2020
 ```{r}
-df %>% 
+df4 <- df[!(is.na(df$hospitalized)), ]
+df4 %>% 
   filter(month==5|month==6|month==7|month==8) %>%
   group_by(weekend) %>% 
-  summarise(positve_increase = mean(positiveIncrease))
+  summarise(hospitalized = mean(hospitalized))
 ```
 
 
