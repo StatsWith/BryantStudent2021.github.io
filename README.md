@@ -11,3 +11,6 @@
 [click here to my Assignment 5](assignment5.html)
 
 [click here to my Assignment 6](assignment6.html)
+
+[click here to my Assignment 7](assignment7.html)
+      [click here for saved graph](stuff.png)
