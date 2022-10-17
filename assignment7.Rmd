@@ -213,7 +213,7 @@ df %>%
 
 ```{r}
 df %>% 
-  filter(date>'2021-12-31'&date<'2023-01-01'&location %in% c("Argentina","Chile","Ecuador","Peru","Portugal","Uruguay")) %>%
+  filter(date>'2020-12-31'&date<'2022-01-01'&location %in% c("Argentina","Chile","Ecuador","Peru","Uruguay")) %>%
   group_by(date, location) %>% 
   summarise(total_vac2=sum(total_vaccinations, na.rm=TRUE)) %>% 
   ggplot()+

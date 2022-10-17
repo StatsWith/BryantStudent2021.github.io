@@ -14,3 +14,5 @@
 
 [click here to my Assignment 7](assignment7.html)
       [click here for saved graph](stuff.png)
+      
+[click here to my Assignment 8](assignment8.html)
