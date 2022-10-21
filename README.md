@@ -16,3 +16,5 @@
       [click here for saved graph](stuff.png)
       
 [click here to my Assignment 8](assignment8.html)
+
+[click here to my Assignment 9](assignment9.html)
